@@ -13,7 +13,40 @@ Chore : 빌드 업무 수정, 패키지 매니지 수정
 Etc : 기타   
 
 ## branching strategy
-main    
-     server    
-         feature     
-ex) feature/[띄어쓰기는-하이픈으로]
+```
+├── main
+└── feature     
+ex) 닉네임/server|client/feature/[띄어쓰기는-하이픈으로]
+```
+
+## tree
+```
+.
+├── README.md
+└── server
+    ├── ...
+    └── src
+        ├── main
+        │   ├── java
+        │   │   └── com
+        │   │       └── jy
+        │   │           └── gongdae
+        │   │               ├── GongdaeApplication.java
+        │   │               ├── config
+        │   │               ├── domain
+        │   │               │   ├── BaseTimeEntity.java
+        │   │               │   └── space
+        │   │               │       ├── Space.java
+        │   │               │       └── SpaceRepository.java
+        │   │               ├── service
+        │   │               │   └── space
+        │   │               │       └── SpaceService.java
+        │   │               └── web
+        │   │                   ├── SpaceApiController.java
+        │   │                   └── dto
+        │   │                       └── SpaceSaveRequestDto.java
+        │   └── resources
+        │       ├── ...
+        └── test
+            └── ...
+```
