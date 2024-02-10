@@ -16,37 +16,4 @@ Etc : 기타
 ```
 ├── main
 └── feature     
-ex) 닉네임/server|client/feature/[띄어쓰기는-하이픈으로]
-```
-
-## tree
-```
-.
-├── README.md
-└── server
-    ├── ...
-    └── src
-        ├── main
-        │   ├── java
-        │   │   └── com
-        │   │       └── jy
-        │   │           └── gongdae
-        │   │               ├── GongdaeApplication.java
-        │   │               ├── config
-        │   │               ├── domain
-        │   │               │   ├── BaseTimeEntity.java
-        │   │               │   └── space
-        │   │               │       ├── Space.java
-        │   │               │       └── SpaceRepository.java
-        │   │               ├── service
-        │   │               │   └── space
-        │   │               │       └── SpaceService.java
-        │   │               └── web
-        │   │                   ├── SpaceApiController.java
-        │   │                   └── dto
-        │   │                       └── SpaceSaveRequestDto.java
-        │   └── resources
-        │       ├── ...
-        └── test
-            └── ...
-```
+ex) 닉네임/server|client/feature/#num[띄어쓰기는-하이픈으로]
