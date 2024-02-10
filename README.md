@@ -16,4 +16,4 @@ Etc : 기타
 ```
 ├── main
 └── feature     
-ex) 닉네임/server|client/feature/#num: [띄어쓰기는-하이픈으로]
+ex) 닉네임/server|client/feature/#num_[간단한-내용]
