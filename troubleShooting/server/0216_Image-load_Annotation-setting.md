@@ -1,16 +1,16 @@
 1번 조합: `@RequestBody` SpaceCreateDto, `@RequestPart` MultipartFile
 
-2024-02-16T16:12:17.148+09:00 WARN 5522 --- [nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content-Type 'multipart/form-data;boundary=--------------------------771750305634248522649202;charset=UTF-8' is not supported]
+```2024-02-16T16:12:17.148+09:00 WARN 5522 --- [nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpMediaTypeNotSupportedException: Content-Type 'multipart/form-data;boundary=--------------------------771750305634248522649202;charset=UTF-8' is not supported]```
 
 2번 조합: `@RequestPart` SpaceCreateDto, `@RequestPart` MultipartFile
 
-2024-02-16T16:13:57.259+09:00 WARN 6308 --- [nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Invalid UTF-8 start byte 0xbd]
+```2024-02-16T16:13:57.259+09:00 WARN 6308 --- [nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Invalid UTF-8 start byte 0xbd]```
 
 `@ModelAttribute`
 
 3번 조합: `@ModelAttribute` SpaceCreateDto, `@ModelAttribute` MultipartFile
 
-2024-02-16T16:14:39.364+09:00 ERROR 6615 --- [nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet] : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: Infinite recursion (StackOverflowError)] with root cause
+```2024-02-16T16:14:39.364+09:00 ERROR 6615 --- [nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet] : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: Infinite recursion (StackOverflowError)] with root cause```
 
 <img width="928" alt="스크린샷 2024-02-18 오전 1 49 29" src="https://github.com/hyetae/gongdae/assets/86393948/205a8d8f-35e3-49d4-93c8-08b4474c7bce">
 
