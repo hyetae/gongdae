@@ -1,24 +1,33 @@
 package com.jy.gongdae.dto;
 
+import com.jy.gongdae.domain.SiteUser;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Data
+@NoArgsConstructor
 public class UserCreateForm {
-    @Size(min = 3, max = 25)
-    @NotEmpty(message = "사용자 ID는 필수 항목입니다.")
-    private String user_id;
 
-    @NotEmpty(message = "비밀번호는 필수 항목입니다.")
-    private String password1;
+    private Long id;
 
-    @NotEmpty(message = "비밀번호 확인은 필수 항목입니다.")
-    private String password2;
+    private String username;
 
-    @NotNull(message = "사업자 구분은 필수 항목입니다.")
+    private String password;
+
     private Integer businessCategory;
+
+    public SiteUser toEntity() {
+        return SiteUser.builder()
+                .username(username)
+                .password(password)
+                .businessCategory(businessCategory)
+                .build();
+    }
 }

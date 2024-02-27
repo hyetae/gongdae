@@ -18,25 +18,9 @@ import lombok.RequiredArgsConstructor;
 public class UserController {
     private final UserService userService;
 
-    @GetMapping("/signup")
-    public String signup(UserCreateForm userCreateForm){
-        return "";
-    }
-
     @PostMapping("/signup")
-    public String signup(@Valid UserCreateForm userCreateForm, BindingResult bindingResult){
-        if (bindingResult.hasErrors()){
-            return "";
-        }
-
-        if(!userCreateForm.getPassword1().equals(userCreateForm.getPassword2())){
-            bindingResult.rejectValue("password2", "passwordInCorrect", "2개의 비밀번호가 일치하지 않습니다.");
-            return "";
-        }
-
-        userService.create(userCreateForm.getUser_id(), userCreateForm.getPassword1(), userCreateForm.getBusinessCategory());
-
-        return "";
+    public Long signup(@RequestBody UserCreateForm userCreateForm) {
+        return userService.createUser(userCreateForm);
     }
 
     @GetMapping("/login")

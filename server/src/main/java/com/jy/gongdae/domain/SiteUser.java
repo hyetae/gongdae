@@ -1,13 +1,17 @@
 package com.jy.gongdae.domain;
 
+import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-public class SiteUser {
+@NoArgsConstructor
+public class SiteUser extends BaseTimeEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,6 +22,12 @@ public class SiteUser {
 
     private Integer businessCategory;
 
+    @Builder
+    public SiteUser(String username, String password, Integer businessCategory){
+        this.username = username;
+        this.password = password;
+        this.businessCategory = businessCategory;
+    }
     public void update(String username){
         this.username = username;
     }
