@@ -5,7 +5,7 @@ For further reference, please consider the following sections:
 
 * [Official Gradle documentation](https://docs.gradle.org)
 * [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/3.2.2/gradle-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/3.2.2/gradle-plugin/reference/html/#build-image)
+* [Create an OCI images](https://docs.spring.io/spring-boot/docs/3.2.2/gradle-plugin/reference/html/#build-images)
 * [Spring Web](https://docs.spring.io/spring-boot/docs/3.2.2/reference/htmlsingle/index.html#web)
 * [Spring Security](https://docs.spring.io/spring-boot/docs/3.2.2/reference/htmlsingle/index.html#web.security)
 * [OAuth2 Client](https://docs.spring.io/spring-boot/docs/3.2.2/reference/htmlsingle/index.html#web.security.oauth2.client)

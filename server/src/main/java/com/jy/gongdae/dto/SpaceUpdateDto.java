@@ -15,7 +15,8 @@ public class SpaceUpdateDto {
     private int purpose;
 
     @Builder
-    public SpaceUpdateDto(String title, String sector, int price, int purpose) {
+    public SpaceUpdateDto(String title, String sector,
+                          int price, int purpose) {
         this.title = title;
         this.sector = sector;
         this.price = price;

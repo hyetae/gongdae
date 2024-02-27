@@ -5,6 +5,7 @@ spring:
     url: ${SPRING_DATASOURCE_URL}
     username: root
     password: ${SPRING_DATASOURCE_PASSWORD}
+
   jpa:
     database: mysql
     database-platform: org.hibernate.dialect.MySQLDialect
@@ -14,3 +15,10 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+  servlet:
+    multipart:
+      enabled: true
+      location: ${SPRING_SERVLET_LOCATION}
+      max-request-size: 300MB
+      max-file-size: 100MB
