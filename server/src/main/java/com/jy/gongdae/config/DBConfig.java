@@ -15,7 +15,7 @@ public class DBConfig {
                 .driverClassName("com.mysql.cj.jdbc.Driver")
                 .url("jdbc:mysql://localhost:3306/gongdae")
                 .username("root")
-                .password("sjdmllove19~")
+                .password("0000")
                 .build();
     }
 }
