@@ -11,5 +11,5 @@ import java.util.List;
 public interface SpaceRepo extends JpaRepository<Space, Long> {
 
     @Query("SELECT s FROM Space s ORDER BY s.createDate ASC")
-    List<Space> findAllAsc();
+    List<Space> findSpaceAllAsc();
 }
