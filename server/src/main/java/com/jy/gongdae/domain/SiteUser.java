@@ -17,4 +17,8 @@ public class SiteUser {
     private String password;
 
     private Integer businessCategory;
+
+    public void update(String username){
+        this.username = username;
+    }
 }
