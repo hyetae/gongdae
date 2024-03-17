@@ -18,20 +18,20 @@ import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1/space")
+@RequestMapping("/api/v1")
 public class SpaceController {
 
     @Autowired
     private SpaceService spaceService;
 
-    @PostMapping( "/create")
+    @PostMapping( "/space")
     public ResponseEntity<?> create(@ModelAttribute SpaceCreateDto spaceCreateDto) throws IOException {
         Space entity = spaceService.createSpace(spaceCreateDto);
         List<MultipartFile> file = spaceCreateDto.getImages();
         return new ResponseEntity<>(spaceService.createImage(entity, file), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/space/{id}")
     public ResponseEntity<?> findSpaceById(@PathVariable Long id) {
         SpaceReadDto spaceReadDto = spaceService.findSpaceById(id);
         Map<String, Object> response = new HashMap<>();
@@ -43,7 +43,7 @@ public class SpaceController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/{id}/{idx}",
+    @GetMapping(value = "space/{id}/{idx}",
             produces = {MediaType.IMAGE_JPEG_VALUE, MediaType.IMAGE_PNG_VALUE})
     public ResponseEntity<?> findImageBySpaceId(@PathVariable Long id, @PathVariable int idx) throws IOException {
         SpaceImageDto spaceImageDto = spaceService.findImageBySpace(id);
@@ -65,7 +65,7 @@ public class SpaceController {
         return new ResponseEntity<>(spaceId, HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/space/{id}")
     public Long delete(@PathVariable Long id) {
         spaceService.deleteSpace(id);
         return id;
