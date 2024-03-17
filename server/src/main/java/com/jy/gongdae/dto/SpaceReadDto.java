@@ -2,12 +2,11 @@ package com.jy.gongdae.dto;
 
 import com.jy.gongdae.domain.Images;
 import com.jy.gongdae.domain.Space;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
-@Getter
+@Data
 @NoArgsConstructor
 public class SpaceReadDto {
     private String title;
