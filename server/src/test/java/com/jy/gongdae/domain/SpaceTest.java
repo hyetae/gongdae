@@ -1,6 +1,5 @@
 package com.jy.gongdae.domain;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -19,11 +18,11 @@ class SpaceTest {
                 .purpose(0)
                 .build();
 
-        Assertions.assertThat(space.getTitle()).isEqualTo("Test-title");
-        Assertions.assertThat(space.getAddress()).isEqualTo("Test-address");
-        Assertions.assertThat(space.getSector()).isEqualTo("Test-sector");
-        Assertions.assertThat(space.getPrice()).isEqualTo(1234);
-        Assertions.assertThat(space.getPurpose()).isEqualTo(0);
+        assertThat(space.getTitle()).isEqualTo("Test-title");
+        assertThat(space.getAddress()).isEqualTo("Test-address");
+        assertThat(space.getSector()).isEqualTo("Test-sector");
+        assertThat(space.getPrice()).isEqualTo(1234);
+        assertThat(space.getPurpose()).isEqualTo(0);
     }
 
     @Test

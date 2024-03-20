@@ -1,23 +1,19 @@
 package com.jy.gongdae.service;
 
-import com.jy.gongdae.domain.Images;
 import com.jy.gongdae.domain.Space;
 import com.jy.gongdae.dto.SpaceCreateDto;
 import com.jy.gongdae.dto.SpaceReadDto;
 import com.jy.gongdae.repository.ImageRepo;
 import com.jy.gongdae.repository.SpaceRepo;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.AdditionalAnswers.returnsFirstArg;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
@@ -52,11 +48,11 @@ class SpaceServiceTest {
         SpaceReadDto spaceReadDto = spaceService.findSpaceById(123L);
 
         // then
-        Assertions.assertEquals(spaceReadDto.getTitle(), space.getTitle());
-        Assertions.assertEquals(spaceReadDto.getAddress(), space.getAddress());
-        Assertions.assertEquals(spaceReadDto.getSector(), space.getSector());
-        Assertions.assertEquals(spaceReadDto.getPrice(), space.getPrice());
-        Assertions.assertEquals(spaceReadDto.getPurpose(), space.getPurpose());
+        assertEquals(spaceReadDto.getTitle(), space.getTitle());
+        assertEquals(spaceReadDto.getAddress(), space.getAddress());
+        assertEquals(spaceReadDto.getSector(), space.getSector());
+        assertEquals(spaceReadDto.getPrice(), space.getPrice());
+        assertEquals(spaceReadDto.getPurpose(), space.getPurpose());
 
         verify(spaceRepo).findById(123L);
     }
@@ -72,11 +68,11 @@ class SpaceServiceTest {
                 new SpaceCreateDto("test-title", "test-address", "test-sector", 123, 0, null));
 
         // then
-        Assertions.assertEquals(space.getTitle(), "test-title");
-        Assertions.assertEquals(space.getAddress(), "test-address");
-        Assertions.assertEquals(space.getSector(), "test-sector");
-        Assertions.assertEquals(space.getPrice(), 123);
-        Assertions.assertEquals(space.getPurpose(), 0);
+        assertEquals(space.getTitle(), "test-title");
+        assertEquals(space.getAddress(), "test-address");
+        assertEquals(space.getSector(), "test-sector");
+        assertEquals(space.getPrice(), 123);
+        assertEquals(space.getPurpose(), 0);
 
         verify(spaceRepo).save(any());
     }

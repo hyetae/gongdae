@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.jy.gongdae.controller.SpaceControllerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2024-03-17T09:42:41" hostname="yunhyegyeong-ui-MacBookPro.local" time="0.126">
+  <properties/>
+  <testcase name="Space 데이터 가져오기 테스트" classname="com.jy.gongdae.controller.SpaceControllerTest" time="0.126"/>
+  <system-out><![CDATA[18:42:39.117 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.jy.gongdae.controller.SpaceControllerTest]: SpaceControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+18:42:39.213 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.jy.gongdae.GongdaeApplication for test class com.jy.gongdae.controller.SpaceControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.2)
+
+2024-03-17T18:42:39.495+09:00  INFO 51810 --- [    Test worker] c.j.g.controller.SpaceControllerTest     : Starting SpaceControllerTest using Java 17.0.9 with PID 51810 (started by yunhyegyeong in /Users/yunhyegyeong/Documents/gongdae/server)
+2024-03-17T18:42:39.496+09:00  INFO 51810 --- [    Test worker] c.j.g.controller.SpaceControllerTest     : No active profile set, falling back to 1 default profile: "default"
+2024-03-17T18:42:41.019+09:00  INFO 51810 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2024-03-17T18:42:41.019+09:00  INFO 51810 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2024-03-17T18:42:41.022+09:00  INFO 51810 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 0 ms
+2024-03-17T18:42:41.046+09:00  INFO 51810 --- [    Test worker] c.j.g.controller.SpaceControllerTest     : Started SpaceControllerTest in 1.777 seconds (process running for 2.646)
+
+MockHttpServletRequest:
+      HTTP Method = GET
+      Request URI = /api/v1/space/1
+       Parameters = {}
+          Headers = []
+             Body = null
+    Session Attrs = {}
+
+Handler:
+             Type = com.jy.gongdae.controller.SpaceController
+           Method = com.jy.gongdae.controller.SpaceController#findSpaceById(Long)
+
+Async:
+    Async started = false
+     Async result = null
+
+Resolved Exception:
+             Type = null
+
+ModelAndView:
+        View name = null
+             View = null
+            Model = null
+
+FlashMap:
+       Attributes = null
+
+MockHttpServletResponse:
+           Status = 200
+    Error message = null
+          Headers = [Content-Type:"application/json"]
+     Content type = application/json
+             Body = {"address":"test-address","purpose":0,"price":123,"title":"test-title","sector":"test-sector"}
+    Forwarded URL = null
+   Redirected URL = null
+          Cookies = []
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
