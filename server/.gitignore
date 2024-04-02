@@ -1,2 +1,3 @@
 application.properties
-static/images/*
+server/src/main/resources/images/*
+server/src/main/resources/logs/*

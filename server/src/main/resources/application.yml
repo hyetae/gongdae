@@ -25,3 +25,10 @@ spring:
       location: ${SPRING_SERVLET_LOCATION}
       max-request-size: 300MB
       max-file-size: 100MB
+
+  logging:
+    file: ${SPRING_SERVLET_LOCATION}/test.log
+    max-history: 30
+    max-size: 100MB
+    pattern:
+      dateformat: yyyy-MM-dd HH:mm:ss.SSS,Asia/Seoul

@@ -25,7 +25,6 @@ import java.util.stream.Collectors;
 @Transactional
 public class SpaceServiceImpl implements SpaceService {
 
-//    private final Logger LOGGER = LoggerFactory.getLogger(SpaceServiceImpl.class);
     private final SpaceRepo spaceRepo;
 
     private ImageRepo imageRepo;

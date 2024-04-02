@@ -17,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.AdditionalAnswers.returnsFirstArg;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(SpringExtension.class)
 class SpaceServiceTest {
@@ -41,7 +42,7 @@ class SpaceServiceTest {
         space.setPrice(123);
         space.setPurpose(0);
 
-        Mockito.when(spaceRepo.findById(123L))
+        when(spaceRepo.findById(123L))
                 .thenReturn(Optional.of(space));
 
         // when
@@ -60,7 +61,7 @@ class SpaceServiceTest {
     @Test
     void saveSpaceTest() {
         // given
-        Mockito.when(spaceRepo.save(any(Space.class)))
+        when(spaceRepo.save(any(Space.class)))
                 .then(returnsFirstArg());
 
         // when

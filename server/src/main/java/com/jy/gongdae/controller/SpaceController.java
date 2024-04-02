@@ -4,6 +4,9 @@ import com.jy.gongdae.domain.Space;
 import com.jy.gongdae.dto.*;
 import com.jy.gongdae.service.SpaceService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,6 +19,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1")
@@ -24,10 +28,13 @@ public class SpaceController {
     @Autowired
     private SpaceService spaceService;
 
+    Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @PostMapping( "/space")
     public ResponseEntity<?> create(@ModelAttribute SpaceCreateDto spaceCreateDto) throws IOException {
         Space entity = spaceService.createSpace(spaceCreateDto);
         List<MultipartFile> file = spaceCreateDto.getImages();
+        logger.info("space created, space_id: " + entity.getId());
         return new ResponseEntity<>(spaceService.createImage(entity, file), HttpStatus.OK);
     }
 
@@ -62,12 +69,14 @@ public class SpaceController {
     public ResponseEntity<?> update(@PathVariable Long id, @ModelAttribute SpaceUpdateDto spaceUpdateDto,
                        @ModelAttribute List<MultipartFile> file) throws IOException {
         Long spaceId = spaceService.updateSpace(id, spaceUpdateDto, file);
+        logger.info("space updated, space_id: " + spaceId);
         return new ResponseEntity<>(spaceId, HttpStatus.OK);
     }
 
     @DeleteMapping("/space/{id}")
     public Long delete(@PathVariable Long id) {
         spaceService.deleteSpace(id);
+        logger.info("space deleted, space_id: " + id);
         return id;
     }
 }
