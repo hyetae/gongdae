@@ -7,7 +7,6 @@ import com.jy.gongdae.dto.UserReadDto;
 import com.jy.gongdae.dto.UserUpdateDto;
 import com.jy.gongdae.repository.UserRepo;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,7 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class UserService {
     private final UserRepo userRepo;
-    private final PasswordEncoder passwordEncoder;
 
     public Long createUser(UserCreateForm userCreateForm) {
         return userRepo.save(userCreateForm.toEntity()).getId();
