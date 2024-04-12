@@ -3,11 +3,9 @@ package com.jy.gongdae.service;
 import com.jy.gongdae.domain.Images;
 import com.jy.gongdae.domain.Space;
 import com.jy.gongdae.dto.*;
-import com.jy.gongdae.repository.ImageRepo;
-import com.jy.gongdae.repository.SpaceRepo;
+import com.jy.gongdae.repository.ImageRepository;
+import com.jy.gongdae.repository.SpaceRepository;
 import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -18,22 +16,23 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
 @Transactional
 public class SpaceServiceImpl implements SpaceService {
 
-//    private final Logger LOGGER = LoggerFactory.getLogger(SpaceServiceImpl.class);
-    private final SpaceRepo spaceRepo;
+    private final SpaceRepository spaceRepository;
 
-    private ImageRepo imageRepo;
+    private ImageRepository imageRepository;
 
     @Autowired
-    public SpaceServiceImpl(SpaceRepo spaceRepo, ImageRepo imageRepo) {
-        this.spaceRepo = spaceRepo;
-        this.imageRepo = imageRepo;
+    public SpaceServiceImpl(SpaceRepository spaceRepository, ImageRepository imageRepository) {
+        this.spaceRepository = spaceRepository;
+        this.imageRepository = imageRepository;
     }
 
     @Value("${SPRING_SERVLET_LOCATION}")
@@ -50,7 +49,7 @@ public class SpaceServiceImpl implements SpaceService {
 
                 Images images = new Images(size, name, path, extension);
                 images.setSpace(space);
-                imageRepo.save(images);
+                imageRepository.save(images);
                 space.createImages(images);
 
                 file.transferTo(new File(path));
@@ -72,41 +71,41 @@ public class SpaceServiceImpl implements SpaceService {
     }
 
     @Override
-    public Space createSpace(SpaceCreateDto spaceCreateDto) {
-        return spaceRepo.save(spaceCreateDto.toEntity());
+    public Space createSpace(SpaceDto.CreationRequest spaceRequestDto) {
+        return spaceRepository.save(spaceRequestDto.toEntity());
     }
 
     @Override
-    public SpaceReadDto findSpaceById(Long id) {
-        Space entity = spaceRepo.findById(id)
+    public SpaceDto.Response findSpaceById(Long id) {
+        Space entity = spaceRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id = " + id));
 
-        return new SpaceReadDto(entity);
+        return new SpaceDto.Response(entity);
     }
 
     @Override
-    public SpaceImageDto findImageBySpace(Long id) {
-        Space entity = spaceRepo.findById(id)
+    public ImageDto findImageBySpace(Long id) {
+        Space entity = spaceRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id = " + id));
 
-        return new SpaceImageDto(entity);
+        return new ImageDto(entity);
     }
 
     @Override
-    public List<SpaceListReadDto> findAllAsc() {
-        return spaceRepo.findSpaceAllAsc().stream()
-                .map(SpaceListReadDto::new)
+    public List<SpaceDto.ListResponse> findAllAsc() {
+        return spaceRepository.findSpaceAllAsc().stream()
+                .map(SpaceDto.ListResponse::new)
                 .collect(Collectors.toList());
     }
 
     @Override
-    public Long updateSpace(Long id, SpaceUpdateDto spaceUpdateDto,
+    public Long updateSpace(Long id, SpaceDto.ModificationRequest spaceModificationRequestDto,
                             List<MultipartFile> multipartFile) throws IOException {
-        Space entity = spaceRepo.findById(id)
+        Space entity = spaceRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id = " + id));
 
-        entity.update(spaceUpdateDto.getTitle(), spaceUpdateDto.getSector(),
-                spaceUpdateDto.getPrice(), spaceUpdateDto.getPurpose());
+        entity.update(spaceModificationRequestDto.getTitle(), spaceModificationRequestDto.getSector(),
+                spaceModificationRequestDto.getPrice(), spaceModificationRequestDto.getPurpose());
 
         createImage(entity, multipartFile);
 
@@ -115,7 +114,7 @@ public class SpaceServiceImpl implements SpaceService {
 
     @Override
     public Long deleteSpace(Long id) {
-        spaceRepo.deleteById(id);
+        spaceRepository.deleteById(id);
         return id;
     }
 }

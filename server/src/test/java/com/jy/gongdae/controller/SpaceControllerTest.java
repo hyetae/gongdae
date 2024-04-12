@@ -1,7 +1,6 @@
 package com.jy.gongdae.controller;
 
-import com.jy.gongdae.dto.SpaceCreateDto;
-import com.jy.gongdae.dto.SpaceReadDto;
+import com.jy.gongdae.dto.SpaceDto;
 import com.jy.gongdae.service.SpaceServiceImpl;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -36,14 +35,14 @@ class SpaceControllerTest {
     void getSpaceTest() throws Exception {
 
         Long spaceId = 1L;
-        SpaceReadDto spaceReadDto = new SpaceReadDto();
-        spaceReadDto.setTitle("test-title");
-        spaceReadDto.setAddress("test-address");
-        spaceReadDto.setSector("test-sector");
-        spaceReadDto.setPrice(123);
-        spaceReadDto.setPurpose(0);
+        SpaceDto.Response spaceResponseDto = new SpaceDto.Response();
+        spaceResponseDto.setTitle("test-title");
+        spaceResponseDto.setAddress("test-address");
+        spaceResponseDto.setSector("test-sector");
+        spaceResponseDto.setPrice(123);
+        spaceResponseDto.setPurpose(0);
 
-        when(spaceService.findSpaceById(spaceId)).thenReturn(spaceReadDto);
+        when(spaceService.findSpaceById(spaceId)).thenReturn(SpaceDto.Response);
 
         mvc.perform(
                 get("/api/v1/space/{id}", spaceId))
@@ -65,23 +64,23 @@ class SpaceControllerTest {
         MockMultipartFile imageFile = new MockMultipartFile("images", "test-image.jpg",
                 MediaType.IMAGE_JPEG_VALUE, "test-image".getBytes());
 
-        SpaceCreateDto spaceCreateDto = new SpaceCreateDto();
-        spaceCreateDto.setTitle("test-title");
-        spaceCreateDto.setAddress("test-address");
-        spaceCreateDto.setSector("test-sector");
-        spaceCreateDto.setPrice(123);
-        spaceCreateDto.setPurpose(0);
-        spaceCreateDto.setImages(Collections.singletonList(imageFile));
+        SpaceDto.CreationRequest spaceRequestDto = new SpaceDto.CreationRequest();
+        spaceRequestDto.setTitle("test-title");
+        spaceRequestDto.setAddress("test-address");
+        spaceRequestDto.setSector("test-sector");
+        spaceRequestDto.setPrice(123);
+        spaceRequestDto.setPurpose(0);
+        spaceRequestDto.setImages(Collections.singletonList(imageFile));
 
-        when(spaceService.createSpace(any(SpaceCreateDto.class))).thenReturn(spaceCreateDto.toEntity());
+        when(spaceService.createSpace(any(SpaceDto.CreationRequest.class))).thenReturn(spaceRequestDto.toEntity());
 
         mvc.perform(
                 post("/api/v1/space")
-                        .content(spaceCreateDto.toString())
+                        .content(spaceRequestDto.toString())
                         .contentType(MediaType.MULTIPART_FORM_DATA))
                 .andExpect(status().isOk())
                 .andDo(print());
 
-        verify(spaceService).createSpace(any(SpaceCreateDto.class));
+        verify(spaceService).createSpace(any(SpaceDto.CreationRequest.class));
     }
 }

@@ -26,12 +26,12 @@ public class Space extends BaseTimeEntity {
     private int price;
     private int purpose;
 
-    @OneToMany(mappedBy = "space", orphanRemoval = true)
+    @OneToMany(mappedBy = "space", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Images> images = new ArrayList<>();
 
-//    @ManyToOne
-//    @JoinColumn(name = "user_id")
-//    private User user;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private SiteUser siteUser;
 
     @Builder
     public Space(String title, String address, String sector,

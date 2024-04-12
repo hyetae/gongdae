@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -21,6 +24,9 @@ public class SiteUser extends BaseTimeEntity{
     private String password;
 
     private Integer businessCategory;
+
+    @OneToMany(mappedBy = "siteUser", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Space> spaces = new ArrayList<>();
 
     @Builder
     public SiteUser(String username, String password, Integer businessCategory){

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface SpaceRepo extends JpaRepository<Space, Long> {
+public interface SpaceRepository extends JpaRepository<Space, Long> {
 
     @Query("SELECT s FROM Space s ORDER BY s.createDate ASC")
     List<Space> findSpaceAllAsc();
