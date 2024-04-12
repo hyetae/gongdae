@@ -1,14 +1,12 @@
 package com.jy.gongdae.controller;
 
-import com.jy.gongdae.dto.UserReadDto;
-import com.jy.gongdae.dto.UserUpdateDto;
+import com.jy.gongdae.dto.UserResponseDto;
+import com.jy.gongdae.dto.UserModificationRequestDto;
 import com.jy.gongdae.service.UserService;
-import com.jy.gongdae.dto.UserCreateForm;
+import com.jy.gongdae.dto.UserRequestDto;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -19,8 +17,8 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/signup")
-    public Long signup(@RequestBody UserCreateForm userCreateForm) {
-        return userService.createUser(userCreateForm);
+    public Long signup(@RequestBody UserRequestDto userRequestDto) {
+        return userService.createUser(userRequestDto);
     }
 
     @GetMapping("/login")
@@ -29,13 +27,13 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public UserReadDto findById(@PathVariable(name="id") Long id) {
+    public UserResponseDto findById(@PathVariable(name="id") Long id) {
         return userService.findById(id);
     }
 
     @PutMapping("/{id}")
-    public Long update(@PathVariable(name="id") Long id, @RequestBody UserUpdateDto userUpdateDto) {
-        return userService.updateUser(id, userUpdateDto);
+    public Long update(@PathVariable(name="id") Long id, @RequestBody UserModificationRequestDto userModificationRequestDto) {
+        return userService.updateUser(id, userModificationRequestDto);
     }
 
     @DeleteMapping("/{id}")

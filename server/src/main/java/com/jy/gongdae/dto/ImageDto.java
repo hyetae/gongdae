@@ -9,10 +9,10 @@ import java.util.List;
 
 @Data
 @NoArgsConstructor
-public class SpaceImageDto {
+public class ImageDto {
     private List<Images> images;
 
-    public SpaceImageDto(Space space) {
+    public ImageDto(Space space) {
         this.images = space.getImages();
     }
 }

@@ -6,12 +6,12 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class UserUpdateDto {
+public class UserModificationRequestDto {
     private Long id;
     private String username;
 
     @Builder
-    public UserUpdateDto(String username){
+    public UserModificationRequestDto(String username){
         this.username = username;
     }
 }

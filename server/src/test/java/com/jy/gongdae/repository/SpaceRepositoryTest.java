@@ -7,16 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class SpaceRepoTest {
+public class SpaceRepositoryTest {
 
     @Autowired
-    private SpaceRepo spaceRepo;
+    private SpaceRepository spaceRepository;
 
     @Test
     @DisplayName("Space DB save")
@@ -29,7 +27,7 @@ public class SpaceRepoTest {
                 .purpose(0)
                 .build();
 
-        Space result = spaceRepo.save(space);
+        Space result = spaceRepository.save(space);
 
         assertThat(result.getTitle()).isEqualTo(space.getTitle());
         assertThat(result.getAddress()).isEqualTo(space.getAddress());
