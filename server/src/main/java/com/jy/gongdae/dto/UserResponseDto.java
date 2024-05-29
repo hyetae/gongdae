@@ -6,10 +6,10 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class UserReadDto {
+public class UserResponseDto {
         private String username;
 
-        public UserReadDto(SiteUser user){
+        public UserResponseDto(SiteUser user){
             this.username = user.getUsername();
         }
 

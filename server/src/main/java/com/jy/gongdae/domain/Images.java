@@ -19,7 +19,7 @@ public class Images extends BaseTimeEntity{
     private String path;
     private String extension;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "space_id")
     private Space space;
 
